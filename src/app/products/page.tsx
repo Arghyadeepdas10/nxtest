@@ -26,7 +26,7 @@ export default function Products() {
         }
     },[data,selectcategory])
 
-    const handlepagechange = (_:any,value:number)=>{
+    const handlepagechange = (_:unknown,value:number)=>{
         setPage(value);
     }
 

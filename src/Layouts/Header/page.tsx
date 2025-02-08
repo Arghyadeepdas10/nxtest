@@ -86,9 +86,11 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
+             {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Link href={`/${page.toLowerCase()}`}>
                   <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>

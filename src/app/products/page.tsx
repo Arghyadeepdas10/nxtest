@@ -1,7 +1,7 @@
 "use client";
 import { useFetchReactQuery } from '@/Hooks/UseReactQuery/useReactQuery';
 import Loader from '@/UI/Loader';
-import { Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Pagination, Select, Typography } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Pagination, Select, SelectChangeEvent, Typography } from '@mui/material';
 
 import React, { useEffect, useState } from 'react'
 
@@ -26,7 +26,7 @@ export default function Products() {
         }
     },[data,selectcategory])
 
-    const handlepagechange = (_:any,value:number)=>{
+    const handlepagechange = (_:unknown,value:number)=>{
         setPage(value);
     }
 
@@ -66,7 +66,7 @@ export default function Products() {
     <div>
         <h1 className='text-red-500 text-6xl text-center'>Products List</h1> <br />
         <h2 className='text-blue-500 text-xl text-center'>Category:- 
-            <Select onChange={(e:any)=>setSelectcategory(e.target.value)} value={selectcategory} className='mx-3 bg-white shadow-md shadow-blue-500/50 w-36' displayEmpty>
+            <Select onChange={(e:SelectChangeEvent)=>setSelectcategory(e.target.value)} value={selectcategory} className='mx-3 bg-white shadow-md shadow-blue-500/50 w-36' displayEmpty>
                 <MenuItem value="">All</MenuItem>
                 <MenuItem value="Electronics">Electronics</MenuItem>
                 <MenuItem value="Computer">Computer</MenuItem>
@@ -107,7 +107,7 @@ export default function Products() {
                 <DialogActions>
                 </DialogActions>
             </Dialog>
-)}
+            )}
     </div>
   )
 }

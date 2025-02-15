@@ -1,8 +1,8 @@
 "use client";
 import { useFetchReactQuery } from '@/Hooks/UseReactQuery/useReactQuery';
 import Loader from '@/UI/Loader';
-import { Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Pagination, Select, SelectChangeEvent, Typography } from '@mui/material';
-
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Pagination, Select, SelectChangeEvent, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 interface Product{
@@ -15,10 +15,13 @@ interface Product{
 }
 export default function Products() {
 
+    const router = useRouter();
+
     const [page, setPage] = useState(1);
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); 
     const [selectcategory, setSelectcategory] = useState('');
     const {data, isLoading, isFetching} = useFetchReactQuery();
+
     
     useEffect(()=>{
         if(data){
@@ -30,9 +33,13 @@ export default function Products() {
         setPage(value);
     }
 
-    const handleClickOpen = (item:Product) => {
-        setSelectedProduct(item);
-      };
+    const handledetails = (productID:number)=>{
+        router.push(`/products/${productID}`)
+    }
+
+    // const handleClickOpen = (item:Product) => {
+    //     setSelectedProduct(item);
+    //   };
     
       const handleClose = () => {
         setSelectedProduct(null);
@@ -53,7 +60,7 @@ export default function Products() {
     const renderlist = paginatedData?.map((item:Product)=>{
         return(
             <div key={item.id} className='flex flex-col items-center justify-center p-4 m-4 shadow-md shadow-blue-500/50 cursor-pointer' 
-            onClick={()=>handleClickOpen(item)}>
+            onClick={()=>handledetails(item.id)}>
                 <img src={item.image} className='w-56 h-56 object-contain'/>
                 <h1>Title:- {item.title}</h1>
                 <h2>Price:- ${item.price}</h2>
@@ -68,9 +75,10 @@ export default function Products() {
         <h2 className='text-blue-500 text-xl text-center'>Category:- 
             <Select onChange={(e:SelectChangeEvent)=>setSelectcategory(e.target.value)} value={selectcategory} className='mx-3 bg-white shadow-md shadow-blue-500/50 w-36' displayEmpty>
                 <MenuItem value="">All</MenuItem>
-                <MenuItem value="Electronics">Electronics</MenuItem>
-                <MenuItem value="Computer">Computer</MenuItem>
-                <MenuItem value="Smart watch">Smart watch</MenuItem>
+                <MenuItem value="men's clothing">Men's clothing</MenuItem>
+                <MenuItem value="jewelery">Jewelery</MenuItem>
+                <MenuItem value="electronics">Electronics</MenuItem>
+                <MenuItem value="women's clothing">Women's Clothing</MenuItem>
             </Select> 
         </h2>
         

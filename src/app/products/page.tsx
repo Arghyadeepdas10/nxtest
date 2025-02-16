@@ -2,6 +2,7 @@
 import { useFetchReactQuery } from '@/Hooks/UseReactQuery/useReactQuery';
 import Loader from '@/UI/Loader';
 import { Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Pagination, Select, SelectChangeEvent, Typography } from '@mui/material';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -61,7 +62,7 @@ export default function Products() {
         return(
             <div key={item.id} className='flex flex-col items-center justify-center p-4 m-4 shadow-md shadow-blue-500/50 cursor-pointer' 
             onClick={()=>handledetails(item.id)}>
-                <img src={item.image} className='w-56 h-56 object-contain'/>
+                <Image src={item.image} className='w-56 h-56 object-contain' alt=''/>
                 <h1>Title:- {item.title}</h1>
                 <h2>Price:- ${item.price}</h2>
                 <h3>Category:- {item.category}</h3>

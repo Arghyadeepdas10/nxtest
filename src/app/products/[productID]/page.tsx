@@ -3,7 +3,7 @@ import { useSingleProductQuery } from '@/Hooks/UseReactQuery/useReactQuery'
 import Loader from '@/UI/Loader';
 import React from 'react'
 
-export default function ProductDetails({params}:{params:{productID:number}}) {
+export default function ProductDetails({ params }: { params: { productID: number } }) {
 
     const {productID} = params;
     const {data, isLoading, isFetching} = useSingleProductQuery(productID);

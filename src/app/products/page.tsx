@@ -76,10 +76,10 @@ export default function Products() {
         <h2 className='text-blue-500 text-xl text-center'>Category:- 
             <Select onChange={(e:SelectChangeEvent)=>setSelectcategory(e.target.value)} value={selectcategory} className='mx-3 bg-white shadow-md shadow-blue-500/50 w-36' displayEmpty>
                 <MenuItem value="">All</MenuItem>
-                <MenuItem value="men's clothing">Men's clothing</MenuItem>
+                <MenuItem value="men's clothing">Mens clothing</MenuItem>
                 <MenuItem value="jewelery">Jewelery</MenuItem>
                 <MenuItem value="electronics">Electronics</MenuItem>
-                <MenuItem value="women's clothing">Women's Clothing</MenuItem>
+                <MenuItem value="women's clothing">Womens Clothing</MenuItem>
             </Select> 
         </h2>
         
